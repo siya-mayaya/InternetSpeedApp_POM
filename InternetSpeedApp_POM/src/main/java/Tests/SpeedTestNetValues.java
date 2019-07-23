@@ -45,12 +45,5 @@ public class SpeedTestNetValues
     public void exportToCSV() throws Exception
     {
         exp.writeToCSV();
-//        String[] values =
-//                {
-//                        speedTestNet.readPingValue(),
-//                        speedTestNet.readDownloadSpeed(),
-//                        speedTestNet.readUploadSpeed()
-//                };
-//        return values;
     }
 }
