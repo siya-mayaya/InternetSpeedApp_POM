@@ -7,27 +7,19 @@ public class FindUrl
 
     public static String ChooseBrowser()
     {
-        Scanner scanner = new Scanner(System.in);
-
         RepositoryProperties property = new RepositoryProperties();
 
         String url = null;
 
-        System.out.println("Choose option: \n1. SpeedTestNet \n2. My Broadband");
+        String option = property.EnvProperties("option");
 
-        int option = scanner.nextInt();
+        switch(option)
+        {
+            case "1": url = property.EnvProperties("speedtestneturl");
+            break;
 
-        if(option == 1)
-        {
-            url = property.EnvProperties("speedtestneturl");
-        }
-        else if (option == 2)
-        {
-            url = property.EnvProperties("mybroadbandurl");
-        }
-        else
-        {
-            System.out.println("Invalid option");
+            case "2": url = property.EnvProperties("mybroadbandurl");
+            break;
         }
         return url;
     }

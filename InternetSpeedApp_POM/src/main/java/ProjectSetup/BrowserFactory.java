@@ -14,19 +14,23 @@ public class BrowserFactory extends RepositoryProperties
         FindUrl findUrl = new FindUrl();
         String Url = findUrl.ChooseBrowser();
 
-        String chromeProperties = property.EnvProperties("chromepath");
-        String chromeDriverPath = property.EnvProperties("chromedriver");
-
         String browser = BrowserName.toLowerCase();
 
         switch(browser)
         {
             case "chrome":
+                String chromeProperties = property.EnvProperties("chromedriver");
+                String chromeDriverPath = property.EnvProperties("chromepath");
                 System.setProperty(chromeProperties, chromeDriverPath);
                 driver = new ChromeDriver();
+                break;
 
             case "firefox":
+                String ffProperties = property.EnvProperties("geckodriver");
+                String ffDriverPath = property.EnvProperties("firefoxpath");
+                System.setProperty(ffProperties, ffDriverPath);
                 driver = new FirefoxDriver();
+                break;
         }
 
         driver.manage().window().maximize();

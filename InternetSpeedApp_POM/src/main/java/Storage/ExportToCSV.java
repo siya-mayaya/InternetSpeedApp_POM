@@ -16,11 +16,10 @@ public class ExportToCSV
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private Date date = new Date();
     private CSVWriter csvWriter;
-    private String csvName = "C:\\Users\\Siya\\IdeaProjects\\Reporting\\SpeedResults\\SpeetTestValues " + dateFormat.format(date) + " " + date.getTime() + ".csv";
+    private String csvName = "C:\\Users\\Siya\\IdeaProjects\\InternetSpeedApp_POM\\SpeedResults\\SpeetTestValues " + dateFormat.format(date) + " " + date.getTime() + ".csv";
 
     public void writeToCSV() throws IOException {
         SpeedTestNet speedtestNet = PageFactory.initElements(driver, SpeedTestNet.class);
-
 
         String[] value =
                 {
