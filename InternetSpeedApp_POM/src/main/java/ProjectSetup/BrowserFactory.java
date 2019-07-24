@@ -2,6 +2,7 @@ package ProjectSetup;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BrowserFactory
@@ -19,10 +20,12 @@ public class BrowserFactory
         switch(browser)
         {
             case "chrome":
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("disable-infobars");
                 String chromeProperties = property.EnvProperties("chromedriver");
                 String chromeDriverPath = property.EnvProperties("chromepath");
                 System.setProperty(chromeProperties, chromeDriverPath);
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(chromeOptions);
                 break;
 
             case "firefox":

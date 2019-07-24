@@ -4,6 +4,7 @@ import ProjectSetup.BrowserFactory;
 import ProjectSetup.ProgramWait;
 import SpeedTestNet_POM.SpeedTestNet;
 import Storage.ExportToCSV;
+import Storage.ExportToJson;
 import Storage.ExportToXML;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -14,6 +15,7 @@ public class SpeedTestNetValues
 {
     private ExportToCSV exp = new ExportToCSV();
     private ExportToXML xml = new ExportToXML();
+    private ExportToJson jsn = new ExportToJson();
     private WebDriver driver = BrowserFactory.startBrowser("Chrome");
     private SpeedTestNet speedTestNet = PageFactory.initElements(driver, SpeedTestNet.class);
     private ProgramWait wait = new ProgramWait();
@@ -41,6 +43,7 @@ public class SpeedTestNetValues
     public void uploadValue()
     {
         speedTestNet.readUploadSpeed();
+        System.out.println(speedTestNet.readUploadSpeed());
     }
 
     @AfterTest
@@ -48,5 +51,6 @@ public class SpeedTestNetValues
     {
         exp.writeToCSV();
         xml.writeProductXML();
+        jsn.writeToJson();
     }
 }

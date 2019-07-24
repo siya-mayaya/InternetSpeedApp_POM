@@ -1,5 +1,6 @@
 package Storage;
 
+import ProjectSetup.RepositoryProperties;
 import SpeedTestNet_POM.SpeedTestNet;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -25,13 +26,17 @@ import static ProjectSetup.BrowserFactory.driver;
 
 public class ExportToXML
 {
+    PathExist pathExist = new PathExist();
+    RepositoryProperties repo = new RepositoryProperties();
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private Date date = new Date();
-    private String xmlName = "C:\\Users\\Siya\\IdeaProjects\\InternetSpeedApp_POM\\XMLResults\\Results " + dateFormat.format(date) + date.getTime() + ".xml";
+    private String path = repo.EnvProperties("projectPath") + "XMLResults\\";
 
     public void writeProductXML()
     {
         SpeedTestNet speed = PageFactory.initElements(driver, SpeedTestNet.class);
+        pathExist.checkFileDir(path);
+        String xmlName = path + "Results " + dateFormat.format(date) + date.getTime() + ".xml";
 
         String pingValue = speed.readPingValue();
         String downloadValue = speed.readDownloadSpeed();
