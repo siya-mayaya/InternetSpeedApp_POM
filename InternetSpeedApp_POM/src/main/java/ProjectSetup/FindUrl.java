@@ -1,10 +1,7 @@
 package ProjectSetup;
 
-import java.util.Scanner;
-
 public class FindUrl
 {
-
     public static String ChooseBrowser()
     {
         RepositoryProperties property = new RepositoryProperties();
