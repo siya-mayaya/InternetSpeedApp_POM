@@ -1,5 +1,6 @@
 package Tests;
 
+import Database.InsertIntoDatabase;
 import ProjectSetup.BrowserFactory;
 import ProjectSetup.ProgramWait;
 import SpeedTestNet_POM.SpeedTestNet;
@@ -16,6 +17,7 @@ public class SpeedTestNetValues
     private ExportToCSV exp = new ExportToCSV();
     private ExportToXML xml = new ExportToXML();
     private ExportToJson jsn = new ExportToJson();
+    private InsertIntoDatabase insert = new InsertIntoDatabase();
     private WebDriver driver = BrowserFactory.startBrowser("Chrome");
     private SpeedTestNet speedTestNet = PageFactory.initElements(driver, SpeedTestNet.class);
     private ProgramWait wait = new ProgramWait();
@@ -52,5 +54,6 @@ public class SpeedTestNetValues
         exp.writeToCSV();
         xml.writeProductXML();
         jsn.writeToJson();
+        insert.InsertIntoDatabase();
     }
 }
